@@ -1,0 +1,46 @@
+<script>
+   let options = ['rock', 'paper', 'scissors'];
+   
+   function getComputerChoice(arr) {
+        return (arr[(Math.floor(Math.random() * arr.length))])
+   }; 
+   
+   
+   
+   function round(computerChoice, playerChoice) {
+    if (computerChoice === "rock" & playerChoice === "rock" || 
+    computerChoice === "paper" & playerChoice === "paper" || 
+    computerChoice === "scissors" & playerChoice === "scissors") {
+        console.log(`Its a Draw! Both picked ${playerChoice}`)
+        return 1
+    } else if (computerChoice === 'rock' & playerChoice === "paper" || 
+    computerChoice === "paper" & playerChoice === "scissors" ||
+    computerChoice === "scissors" & playerChoice === "rock") {
+        console.log(`You've Won! ${playerChoice} beats ${computerChoice}`)
+        return 2
+    } else {
+        console.log(`You've Lost! ${computerChoice} beats ${playerChoice}`)
+        return 3
+    }
+   }
+   
+   
+   function game() {
+    let playerScore = 0
+    let computerScore = 0
+    for (let i = 0; i < 5; i++) {
+        let playerChoice = (prompt("Rock, Paper, or Scissors?").toLowerCase());
+        let computerChoice = getComputerChoice(options)
+        let result = round()
+        if (result === 3) {
+            computerScore += 1
+        } else if (result === 2) {
+            playerScore += 1
+        } else {
+            return
+        }
+        return console.log(`The Score is Computer: ${computerScore} to Player: ${playerScore}`)   
+    }
+   }
+   game()
+</script>
